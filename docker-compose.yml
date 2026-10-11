@@ -1,9 +1,9 @@
 services:
   minecraft:
-    image: itzg/minecraft-server
+    image: itzg/minecraft-server:java21          # ← versión de Java fijada
     container_name: mc
     ports:
-      - "25565:25565"
+      - "127.0.0.1:25565:25565"                  # ← solo accesible desde tu PC
     environment:
       EULA: "TRUE"
       TYPE: "NEOFORGE"
@@ -22,7 +22,7 @@ services:
         sophisticated-backpacks
         xaeros-minimap
         xaeros-world-map
-        open-parties-and-claims
+        open-parties-and-claims:neoforge-1.21.1-0.32.7
         yungs-better-dungeons
         chococraft
         patchouli
