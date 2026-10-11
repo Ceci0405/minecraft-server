@@ -1,0 +1,37 @@
+services:
+  minecraft:
+    image: itzg/minecraft-server
+    container_name: mc
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+      TYPE: "NEOFORGE"
+      VERSION: "1.21.1"
+      MEMORY: "6G"
+      TZ: "Europe/Madrid"
+      MOTD: "Servidor de la comunidad"
+      DIFFICULTY: "normal"
+      ENABLE_WHITELIST: "TRUE"
+      ENFORCE_WHITELIST: "TRUE"
+      WHITELIST: ${WHITELIST}
+      OPS: ${OPS}
+      RCON_PASSWORD: ${RCON_PASSWORD}
+      MODRINTH_PROJECTS: |
+        jei
+        sophisticated-backpacks
+        xaeros-minimap
+        xaeros-world-map
+        open-parties-and-claims
+        yungs-better-dungeons
+        chococraft
+        patchouli
+        ferrite-core
+        modernfix
+        jade
+      MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
